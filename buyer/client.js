@@ -1,13 +1,17 @@
 'use strict'
-const {PublicClient} = require('coinbase-pro-node-api');
+const {AuthenticatedClient} = require('coinbase-pro-node-api');
 
 module.exports.coinbaseClient = () => {
+  const useSandbox = process.env.BUYER_CB_USE_SANDBOX;
   const auth = {
-    apiKey: process.env.BUYER_CB_API_KEY,
-    apiSecret: process.env.BUYER_CB_API_SECRET,
-    passphrase: process.env.BUYER_CB_PASSPHRASE,
-    sandbox: process.env.BUYER_CB_USE_SANDBOX
+    key: useSandbox ? process.env.BUYER_CB_SANDBOX_API_KEY :
+                      process.env.BUYER_CB_API_KEY,
+    secret: useSandbox ? process.env.BUYER_CB_SANDBOX_API_SECRET :
+                         process.env.BUYER_CB_API_SECRET,
+    passphrase: useSandbox ? process.env.BUYER_CB_SANDBOX_PASSPHRASE :
+                             process.env.BUYER_CB_PASSPHRASE,
+    sandbox: useSandbox
   };
-  console.log(`Using API key ${auth.apiKey} with sandbox: ${auth.sandbox}.`);
-  return new PublicClient(auth);
+  console.log(`Using API key ${auth.key} sandbox mode: ${auth.sandbox}.`);
+  return new AuthenticatedClient(auth);
 };

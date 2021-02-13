@@ -8,9 +8,9 @@ process.on('unhandledRejection', (err) => {
 
 (async () => {
   const client = coinbaseClient();
-  const products = await client.getProducts();
-  products.forEach(product => {
-    console.log(product);
+  const accounts = await client.getAccounts();
+  accounts.forEach(account => {
+    console.log(account);
   });
 })();
 
