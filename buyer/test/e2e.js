@@ -20,7 +20,7 @@ describe('when purchasing coins', () => {
 
   it('places an order sucessfully', async () => {
     const order = await client.placeOrder(
-        {size: '0.01', price: '200', side: 'buy', product_id: 'BTC-USD'});
+        {funds: '100', type: 'market', side: 'buy', product_id: 'BTC-GBP'});
     order.status.should.be.equal('pending');
   });
 });
