@@ -7,9 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - working-directory: buyer
       - uses: actions/setup-node@v1
         with:
           node-version: 15
+      - working-directory: buyer
       - run: npm ci
       - run: npm test
