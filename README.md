@@ -1,2 +1,3 @@
-# cyber-coin-contraption
-Buys some of that internet money, bit-by-bit
+# Cyber Coin Contraption
+
+Buys some of that internet money, bit-by-bit 💸 💸 💸
