@@ -10,5 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "coinbase-pro-node": "^2.18.0"
+  }
 }
