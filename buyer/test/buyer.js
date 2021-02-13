@@ -1,6 +1,6 @@
 'use strict';
 const should = require('chai').should();
-const {coinbaseClient} = require('../client.js');
+const {sandboxClient} = require('../client.js');
 const {buy} = require('../buyer.js');
 
 async function topUpAccount(client) {
@@ -13,7 +13,7 @@ async function topUpAccount(client) {
 };
 
 describe('when purchasing coins', () => {
-  const client = coinbaseClient();
+  const client = sandboxClient();
 
   before(async () => {
     topUpAccount(client);
