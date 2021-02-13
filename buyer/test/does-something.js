@@ -2,10 +2,10 @@
 const {assert} = require('chai');
 const {coinbaseClient} = require('../client.js');
 
-describe('when it does something', () => {
+describe('when the client is used', () => {
   const client = coinbaseClient();
-  it('does something', async () => {
-    accounts = await client.rest.account.listAccounts();
-    console.log(`You can trade "${accounts.length}" different pairs.`);
+  it('returns the time', async () => {
+    const time = await client.getTime();
+    assert.isOk(time);
   });
 });
