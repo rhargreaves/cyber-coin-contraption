@@ -10,5 +10,6 @@ run: build
 		-e BUYER_CB_API_SECRET \
 		-e BUYER_CB_USE_SANDBOX \
 		-e BUYER_CB_PASSPHRASE \
-		-it $(DOCKER_IMAGE)
+		-it $(DOCKER_IMAGE) \
+		npm start
 .PHONY: run
