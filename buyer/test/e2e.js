@@ -1,5 +1,4 @@
 'use strict';
-const {assert} = require('chai');
 const should = require('chai').should();
 const {coinbaseClient} = require('../client.js');
 
@@ -22,7 +21,6 @@ describe('when purchasing coins', () => {
   it('places an order sucessfully', async () => {
     const order = await client.placeOrder(
         {size: '0.01', price: '200', side: 'buy', product_id: 'BTC-USD'});
-    order.id.should.be.ok;
     order.status.should.be.equal('pending');
   });
 });
