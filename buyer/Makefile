@@ -4,7 +4,7 @@ DOCKER_RUN=docker run \
 					 -e BUYER_CB_API_SECRET \
 					 -e BUYER_CB_USE_SANDBOX \
 					 -e BUYER_CB_PASSPHRASE \
-					 -it $(DOCKER_IMAGE)
+					 -t $(DOCKER_IMAGE)
 
 all: test
 
