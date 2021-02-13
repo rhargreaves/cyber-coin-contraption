@@ -11,5 +11,5 @@ process.on('unhandledRejection', (err) => {
   const client = coinbaseClient();
   accounts = await client.rest.account.listAccounts();
   console.log(`You can trade "${accounts.length}" different pairs.`);
-})().catch(console.error);
+})();
 
