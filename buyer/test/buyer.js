@@ -20,7 +20,7 @@ describe('when purchasing coins', () => {
   });
 
   it('places an order sucessfully', async () => {
-    const order = await buy();
+    const order = await buy(client);
     order.status.should.be.equal('pending');
     order.specified_funds.should.be.equal('10');
   });
