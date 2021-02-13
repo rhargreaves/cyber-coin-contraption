@@ -1,6 +1,7 @@
 'use strict';
 const should = require('chai').should();
 const {coinbaseClient} = require('../client.js');
+const {buy} = require('../buyer.js');
 
 async function topUpAccount(client) {
   const accounts = await client.getCoinbaseAccounts();
@@ -19,8 +20,7 @@ describe('when purchasing coins', () => {
   });
 
   it('places an order sucessfully', async () => {
-    const order = await client.placeOrder(
-        {funds: '100', type: 'market', side: 'buy', product_id: 'BTC-GBP'});
+    const order = await buy();
     order.status.should.be.equal('pending');
   });
 });
