@@ -1,6 +1,5 @@
 'use strict';
-const {CoinbasePro, CandleGranularity} = require('coinbase-pro-node');
-const {coinbaseClient} = require('./client')
+const {PublicClient} = require('coinbase-pro-node-api');
 
 process.on('unhandledRejection', (err) => {
   console.error(err instanceof Error ? err.message : err);
@@ -8,8 +7,11 @@ process.on('unhandledRejection', (err) => {
 });
 
 (async () => {
-  const client = coinbaseClient();
-  accounts = await client.rest.account.listAccounts();
-  console.log(`You can trade "${accounts.length}" different pairs.`);
+  const client = new PublicClient({sandbox: true});
+  const products = await client.getProducts();
+  products.forEach(product => {
+    console.log(product);
+  });
+  console.log(`You can trade "${products.length}" different pairs.`);
 })();
 
