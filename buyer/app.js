@@ -1,17 +1,6 @@
 'use strict';
 const {CoinbasePro, CandleGranularity} = require('coinbase-pro-node');
-
-const getClient = () => {
-  const auth = {
-    apiKey: process.env.BUYER_CB_API_KEY,
-    apiSecret: process.env.BUYER_CB_API_SECRET,
-    passphrase: process.env.BUYER_CB_PASSPHRASE,
-    useSandbox: process.env.BUYER_CB_USE_SANDBOX
-  };
-  console.log(`Using API key ${auth.apiKey} with sandbox: ${auth.useSandbox}.`);
-  return new CoinbasePro(auth);
-};
-module.exports.getClient = getClient;
+const {coinbaseClient} = require('./client')
 
 process.on('unhandledRejection', (err) => {
   console.error(err instanceof Error ? err.message : err);
@@ -19,7 +8,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 (async () => {
-  const client = getClient();
+  const client = coinbaseClient();
   const candles = await client.rest.product.getCandles('BTC-USD', {
     end: '2020-04-11T10:00:00.000Z',
     granularity: CandleGranularity.ONE_HOUR,
