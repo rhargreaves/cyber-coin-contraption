@@ -1,5 +1,5 @@
 'use strict';
-const {coinbaseClient} = require('./client');
+const {buy} = require('./buyer');
 
 process.on('unhandledRejection', (err) => {
   console.error(err instanceof Error ? err.message : err);
@@ -7,10 +7,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 (async () => {
-  const client = coinbaseClient();
-  const accounts = await client.getAccounts();
-  accounts.forEach(account => {
-    console.log(account);
-  });
+  const order = await buy();
+  console.log(order);
 })();
 

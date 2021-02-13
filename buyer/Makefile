@@ -20,7 +20,7 @@ test: build
 		npm run test
 .PHONY: test
 
-run:
+run: test
 	$(DOCKER_RUN) \
 		npm run start
 .PHONY: run
