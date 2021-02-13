@@ -8,12 +8,13 @@
   },
   "scripts": {
     "start": "node app.js",
-    "test": "mocha -t 5000 test"
+    "test": "npx mocha -t 5000 test"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chai": "^4.3.0",
-    "coinbase-pro-node-api": "^3.1.0"
+    "coinbase-pro-node-api": "^3.1.0",
+    "mocka": "^0.0.1"
   }
 }
