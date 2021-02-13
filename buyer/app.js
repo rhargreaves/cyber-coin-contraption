@@ -1,6 +1,6 @@
 'use strict';
 const {buy} = require('./buyer');
-const {coinbaseClient} = require('./client');
+const {defaultClient} = require('./client');
 
 process.on('unhandledRejection', (err) => {
   console.error(err instanceof Error ? err.message : err);
@@ -8,7 +8,7 @@ process.on('unhandledRejection', (err) => {
 });
 
 (async () => {
-  const client = coinbaseClient();
+  const client = defaultClient();
   const order = await buy(client);
   console.log(order);
 })();
