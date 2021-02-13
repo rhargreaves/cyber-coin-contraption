@@ -12,3 +12,8 @@ jobs:
           node-version: 15
       - working-directory: buyer
         run: make test
+        env:
+          BUYER_CB_SANDBOX_API_KEY: ${{ secrets.BUYER_CB_SANDBOX_API_KEY }}
+          BUYER_CB_SANDBOX_API_SECRET: ${{ secrets.BUYER_CB_SANDBOX_API_SECRET }}
+          BUYER_CB_SANDBOX_PASSPHRASE: ${{ secrets.BUYER_CB_SANDBOX_PASSPHRASE }}
+          BUYER_CB_USE_SANDBOX: true
