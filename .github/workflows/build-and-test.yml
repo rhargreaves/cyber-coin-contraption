@@ -21,6 +21,7 @@ jobs:
       - working-directory: buyer
         run: make deploy
   test-e2e:
+    needs: test-and-deploy
     environment: test
     runs-on: ubuntu-latest
     steps:
