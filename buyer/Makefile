@@ -7,6 +7,8 @@ DOCKER_RUN=docker run \
 					 -e BUYER_CB_SANDBOX_API_SECRET \
 					 -e BUYER_CB_SANDBOX_PASSPHRASE \
 					 -e BUYER_CB_USE_SANDBOX \
+					 -e AWS_ACCESS_KEY_ID \
+					 -e AWS_SECRET_ACCESS_KEY \
 					 -t $(DOCKER_IMAGE)
 AWS_PROFILE=cccb
 
@@ -26,6 +28,6 @@ run: test
 		npm run start
 .PHONY: run
 
-deploy: test
-	sls deploy \
-		--aws-profile $(AWS_PROFILE)
+deploy:
+	$(DOCKER_RUN) \
+		node_modules/.bin/sls deploy
