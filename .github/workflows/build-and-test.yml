@@ -3,8 +3,15 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+env:
+  BUYER_CB_SANDBOX_API_KEY: ${{ secrets.BUYER_CB_SANDBOX_API_KEY }}
+  BUYER_CB_SANDBOX_API_SECRET: ${{ secrets.BUYER_CB_SANDBOX_API_SECRET }}
+  BUYER_CB_SANDBOX_PASSPHRASE: ${{ secrets.BUYER_CB_SANDBOX_PASSPHRASE }}
+  BUYER_CB_USE_SANDBOX: true
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
-  build:
+  deploy:
     environment: test
     runs-on: ubuntu-latest
     steps:
@@ -14,8 +21,4 @@ jobs:
           node-version: 15
       - working-directory: buyer
         run: make test
-        env:
-          BUYER_CB_SANDBOX_API_KEY: ${{ secrets.BUYER_CB_SANDBOX_API_KEY }}
-          BUYER_CB_SANDBOX_API_SECRET: ${{ secrets.BUYER_CB_SANDBOX_API_SECRET }}
-          BUYER_CB_SANDBOX_PASSPHRASE: ${{ secrets.BUYER_CB_SANDBOX_PASSPHRASE }}
-          BUYER_CB_USE_SANDBOX: true
+      - run: make deploy
