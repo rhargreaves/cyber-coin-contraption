@@ -1,0 +1,14 @@
+{
+  "name": "cccb-e2e",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha -t 5000 test"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.0",
+    "coinbase-pro-node-api": "^3.1.0",
+    "mocha": "^8.3.0"
+  }
+}
