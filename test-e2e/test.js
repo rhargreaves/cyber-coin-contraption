@@ -1,6 +1,7 @@
 'use strict';
 const should = require('chai').should();
 const {sandboxClient} = require('./client.js');
+const {LambdaClient, InvokeCommand} = require('@aws-sdk/client-lambda');
 
 async function topUpAccount(client) {
   const accounts = await client.getCoinbaseAccounts();
@@ -18,5 +19,16 @@ describe('when buy lambda is invoked', () => {
     topUpAccount(client);
   });
 
-  it('places an order sucessfully', async () => {});
+  it('places an order sucessfully', async () => {
+    const params = {
+      FunctionName: 'buyer-test-buy',
+      InvocationType: 'RequestResponse',
+      LogType: 'Tail'
+    };
+    const lambda = new LambdaClient({region: 'us-east-1'});
+    const command = new InvokeCommand(params);
+    const resp = await lambda.send(command);
+    resp.should.be.ok;
+    console.log(resp);
+  });
 });
