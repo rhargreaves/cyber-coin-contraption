@@ -1,0 +1,22 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+service: buyer
+frameworkVersion: '2'
+provider:
+  name: aws
+  runtime: nodejs12.x
+  lambdaHashingVersion: 20201221
+  stage: test
+  region: us-east-1
+functions:
+  buy:
+    handler: handler.buy
+    events:
+      - http:
+          path: /buy
+          method: post
+          authorizer:
+            type: aws_iam
+      - schedule: rate(10 minutes)
+    environment:
+      BUYER_CB_USE_SANDBOX: true
