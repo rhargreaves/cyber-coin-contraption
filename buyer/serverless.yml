@@ -10,7 +10,7 @@ provider:
     shouldStartNameWithService: true
 functions:
   buy:
-    handler: handler.buy
+    handler: index.handler
     events:
       - schedule: rate(7 days)
     environment:
