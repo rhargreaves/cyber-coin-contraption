@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 module.exports.buy = async (client) => {
   const amount = '10';

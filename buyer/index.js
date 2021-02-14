@@ -7,5 +7,5 @@ module.exports.handler = async (event, context) => {
   const order = await buy(client);
   console.log(order);
   return order;
-});
+};
 
