@@ -8,6 +8,8 @@ provider:
   lambdaHashingVersion: 20201221
   stage: test
   region: us-east-1
+  apiGateway:
+    shouldStartNameWithService: true
 functions:
   buy:
     handler: handler.buy
