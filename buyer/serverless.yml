@@ -12,11 +12,6 @@ functions:
   buy:
     handler: handler.buy
     events:
-      - http:
-          path: /buy
-          method: post
-          authorizer:
-            type: aws_iam
-      - schedule: rate(1 day)
+      - schedule: rate(7 days)
     environment:
       BUYER_CB_USE_SANDBOX: true
