@@ -15,3 +15,6 @@ functions:
       - schedule: rate(7 days)
     environment:
       BUYER_CB_USE_SANDBOX: true
+      BUYER_CB_SANDBOX_API_KEY: ${env:BUYER_CB_SANDBOX_API_KEY}
+      BUYER_CB_SANDBOX_API_SECRET: ${env:BUYER_CB_SANDBOX_API_SECRET}
+      BUYER_CB_SANDBOX_PASSPHRASE: ${env:BUYER_CB_SANDBOX_PASSPHRASE}
