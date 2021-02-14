@@ -22,12 +22,16 @@ Otherwise, to run for reals and spend **real money**:
 
 ### Testing
 
+Tests are hardwired to run against the sandbox. They will never run against the production Coinbase API.
+
 ```sh
 $ cd buyer
 $ make test
 ```
 
 ### Run
+
+Will run against the real or sandbox API as determined by `BUYER_CB_USE_SANDBOX`.
 
 ```sh
 $ cd buyer
