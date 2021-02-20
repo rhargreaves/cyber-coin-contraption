@@ -7,12 +7,17 @@ env:
   BUYER_CB_SANDBOX_API_KEY: ${{ secrets.BUYER_CB_SANDBOX_API_KEY }}
   BUYER_CB_SANDBOX_API_SECRET: ${{ secrets.BUYER_CB_SANDBOX_API_SECRET }}
   BUYER_CB_SANDBOX_PASSPHRASE: ${{ secrets.BUYER_CB_SANDBOX_PASSPHRASE }}
+  BUYER_CB_API_KEY: ${{ secrets.BUYER_CB_API_KEY }}
+  BUYER_CB_API_SECRET: ${{ secrets.BUYER_CB_API_SECRET }}
+  BUYER_CB_PASSPHRASE: ${{ secrets.BUYER_CB_PASSPHRASE }}
   BUYER_CB_USE_SANDBOX: true
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 jobs:
   test-and-deploy:
     environment: test
+    env:
+      SLS_STAGE: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,3 +33,13 @@ jobs:
       - uses: actions/checkout@v2
       - working-directory: test-e2e
         run: make test
+  prod-deploy:
+    environment: prod
+    env:
+      SLS_STAGE: prod
+      BUYER_CB_USE_SANDBOX: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - working-directory: buyer
+        run: make deploy

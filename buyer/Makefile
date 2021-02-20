@@ -30,4 +30,5 @@ run: test
 
 deploy:
 	$(DOCKER_RUN) \
-		node_modules/.bin/sls deploy
+		node_modules/.bin/sls deploy \
+		--stage $(SLS_STAGE)
