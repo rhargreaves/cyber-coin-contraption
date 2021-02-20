@@ -14,10 +14,10 @@ async function topUpAccount(client) {
 };
 
 describe('when buy lambda is invoked', () => {
-  const client = sandboxClient();
+  const coinbase = sandboxClient();
 
   before(async () => {
-    topUpAccount(client);
+    topUpAccount(coinbase);
   });
 
   it('places an order sucessfully', async () => {
@@ -30,8 +30,9 @@ describe('when buy lambda is invoked', () => {
     const command = new InvokeCommand(params);
     const resp = await lambda.send(command);
     const decoder = new StringDecoder('utf8');
-    const orderId = decoder.write(resp.Payload);
+    const orderId = JSON.parse(decoder.write(resp.Payload));
     console.log(`Order ID = ${orderId}`);
-    orderId.length.should.equal(38);
+    const order = await coinbase.getOrder({id: orderId});
+    order.specified_funds.should.equal('10.0000000000000000');
   });
 });
