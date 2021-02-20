@@ -34,6 +34,7 @@ jobs:
       - working-directory: test-e2e
         run: make test
   prod-deploy:
+    needs: test-e2e
     environment: prod
     env:
       SLS_STAGE: prod
