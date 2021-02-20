@@ -43,4 +43,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - working-directory: buyer
-        run: make deploy
+        run: make build deploy
