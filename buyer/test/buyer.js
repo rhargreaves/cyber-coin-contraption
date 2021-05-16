@@ -23,5 +23,6 @@ describe('when purchasing coins', () => {
     const order = await buy(client);
     order.status.should.be.equal('pending');
     order.specified_funds.should.be.equal('10');
+    order.product_id.should.be.equal('BTC-GBP');
   });
 });
